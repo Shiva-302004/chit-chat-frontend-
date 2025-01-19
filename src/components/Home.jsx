@@ -40,12 +40,12 @@ const Home = () => {
     if(signup.confirmpassword===signup.password){
       const formdata=new FormData()
       formdata.append("image",image)
-      const imageurl=await axios.post('http://localhost:8000/user/image',formdata)
+      const imageurl=await axios.post('https://chit-chat-backend-y7u2.onrender.com/user/image',formdata)
       console.log(imageurl)
       if(imageurl.data.success){
         setsignup({...signup,pic:imageurl.data.result})
         
-        const user=await axios.post('http://localhost:8000/user/signup',{
+        const user=await axios.post('https://chit-chat-backend-y7u2.onrender.com/user/signup',{
           name:signup.name,
           pic:imageurl.data.result,
           password:signup.password,

@@ -15,7 +15,7 @@ export default function TemporaryDrawer({setloading,loading,searchresults,setsea
     const {chats,setchats,setselectedChat}=useChat()
     const accessChat=async(userId)=>{
         try{
-            const {data}=await axios.post("http://localhost:8000/chats/",{"userId":userId},{headers:{
+            const {data}=await axios.post("https://chit-chat-backend-y7u2.onrender.com/chats/",{"userId":userId},{headers:{
                 "Content-Type":"application/json",
                 "token":localStorage.getItem("token")||null
             }})
@@ -33,7 +33,7 @@ export default function TemporaryDrawer({setloading,loading,searchresults,setsea
         }
             try{
                 setloading(true)
-                const data=await axios(`http://localhost:8000/user/Allusers?name=${search}`,{
+                const data=await axios(`https://chit-chat-backend-y7u2.onrender.com/user/Allusers?name=${search}`,{
                     headers:{
                         "Content-Type":"application/json",
                         "token":localStorage.getItem("token")

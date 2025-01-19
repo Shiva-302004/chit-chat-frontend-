@@ -14,7 +14,7 @@ const MysChats = ({ fetchagain, setfetchagain }) => {
 
   const fetchChat = async () => {
     setloading(true);
-    const data = await axios("http://localhost:8000/chats/fetchchats", {
+    const data = await axios("https://chit-chat-backend-y7u2.onrender.com/chats/fetchchats", {
       headers: {
         "Content-Type": "application/json",
         "token": localStorage.getItem("token")

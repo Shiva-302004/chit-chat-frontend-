@@ -39,7 +39,7 @@ const GroupProfileModal = ({ children, fetchagain, setfetchagain }) => {
             return;
         }
         try{
-            const {data}=await axios.put("http://localhost:8000/chats/removefromgroup",{chatId:grpid,userId:userid},{headers:{
+            const {data}=await axios.put("https://chit-chat-backend-y7u2.onrender.com/chats/removefromgroup",{chatId:grpid,userId:userid},{headers:{
                 "type":"application/json",
                 "token":localStorage.getItem("token")
             }})

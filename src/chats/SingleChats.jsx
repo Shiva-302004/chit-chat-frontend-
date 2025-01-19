@@ -16,7 +16,7 @@ export const getSenderFull = (loggeduser, users) => {
   }
   return { name: "", email: "", pic: "" }
 }
-const endpoint = "http://localhost:8000";
+const endpoint = "https://chit-chat-backend-y7u2.onrender.com";
 var socket, selectedChatCompare;
 
 
@@ -51,7 +51,7 @@ const SingleChats = ({ fetchagain, setfetchagain }) => {
   const handleClick = async (id) => {
     try {
       socket.emit("stop typing", id)
-      const { data } = await axios.post("http://localhost:8000/message/", { "chatId": id, "content": text }, {
+      const { data } = await axios.post("https://chit-chat-backend-y7u2.onrender.com/message/", { "chatId": id, "content": text }, {
         headers: {
           "token": localStorage.getItem("token")
         }
@@ -69,7 +69,7 @@ const SingleChats = ({ fetchagain, setfetchagain }) => {
   const fetchChat = async () => {
     try {
       if (selectedChat != null) {
-        const { data } = await axios.get(`http://localhost:8000/message/all/${selectedChat?._id}`, {
+        const { data } = await axios.get(`https://chit-chat-backend-y7u2.onrender.com/message/all/${selectedChat?._id}`, {
           headers: {
             "token": localStorage.getItem("token")
           }

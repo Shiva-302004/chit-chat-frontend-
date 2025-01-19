@@ -49,7 +49,7 @@ export default function GroupModal() {
 
         try {
             setloading(true)
-            const data = await axios(`http://localhost:8000/user/Allusers?name=${search}`, {
+            const data = await axios(`https://chit-chat-backend-y7u2.onrender.com/user/Allusers?name=${search}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "token": localStorage.getItem("token")
@@ -69,7 +69,7 @@ export default function GroupModal() {
     }
     const handleSubmit = async () => {
         try {
-            const data = await axios.post("http://localhost:8000/chats/group", { name: name, users: JSON.stringify(users) }, {
+            const data = await axios.post("https://chit-chat-backend-y7u2.onrender.com/chats/group", { name: name, users: JSON.stringify(users) }, {
                 headers: {
                     "Content-Type": "application/json",
                     "token": localStorage.getItem("token")
