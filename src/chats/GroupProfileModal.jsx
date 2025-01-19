@@ -56,7 +56,7 @@ const GroupProfileModal = ({ children, fetchagain, setfetchagain }) => {
         
     }
     const handlerename = async (id) => {
-        const { data } = await axios.put("http://localhost:8000/chats/rename", { grpId: id, chatname: groupchatname }, {
+        const { data } = await axios.put("https://chit-chat-backend-y7u2.onrender.com/chats/rename", { grpId: id, chatname: groupchatname }, {
             headers: {
                 "type": "application/json",
                 "token": localStorage.getItem("token")
@@ -74,7 +74,7 @@ const GroupProfileModal = ({ children, fetchagain, setfetchagain }) => {
     const handlesearch = async (search) => {
         try {
             // setloading(true)
-            const data = await axios(`http://localhost:8000/user/Allusers?name=${search}`, {
+            const data = await axios(`https://chit-chat-backend-y7u2.onrender.com/user/Allusers?name=${search}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "token": localStorage.getItem("token")
@@ -109,7 +109,7 @@ const GroupProfileModal = ({ children, fetchagain, setfetchagain }) => {
             if(bol){
                 return;
             }else{
-                const {data}=await axios.put("http://localhost:8000/chats/addtogroup",{chatId:grpid,userId:userid},{headers:{
+                const {data}=await axios.put("https://chit-chat-backend-y7u2.onrender.com/chats/addtogroup",{chatId:grpid,userId:userid},{headers:{
                     "type":"application/json",
                     "token":localStorage.getItem("token")
                 }})
