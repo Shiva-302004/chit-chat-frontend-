@@ -73,7 +73,7 @@ const Home = () => {
     }),
 
     onSubmit: async(values) => {
-      const data=await axios.post("http://localhost:8000/user/login",values)
+      const data=await axios.post("https://chit-chat-backend-y7u2.onrender.com/user/login",values)
       console.log(data.data)
       if(data.data.success){
         toast.success(data.data.msg)
