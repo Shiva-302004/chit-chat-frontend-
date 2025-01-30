@@ -51,6 +51,7 @@ const Home = () => {
           password:signup.password,
           email:signup.email
         })
+        if(user.data.success){
         console.log(signup)
         console.log(user.data.user)
         toast.success(user.data.msg)
@@ -58,6 +59,9 @@ const Home = () => {
         localStorage.setItem("token",user.data.token)
         localStorage.setItem("User",JSON.stringify(user.data.user))
         router("/chats")
+        }else{
+          toast.error(user.data.msg)
+        }
       }else{
         toast.error(imageurl.data.msg)
       }
