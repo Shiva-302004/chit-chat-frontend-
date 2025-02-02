@@ -5,7 +5,7 @@ import Chat from './components/Chat'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UseAnimations from "react-useanimations";
-import VerifyUser from './components/verifyuser';
+import VerifyUser from './components/VerifyUser';
 function App() {
   return (
     <div className='app overflow-x-hidden w-[100vw] '>
