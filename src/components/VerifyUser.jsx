@@ -40,7 +40,7 @@ const VerifyUser = () => {
         console.log(data)
         if(data.msg==="user not registered"){
           localStorage.removeItem("User");
-          localStorage.removeItem("token");router("/")
+          localStorage.removeItem("token");router("/");localStorage.removeItem("selectedchat")
           return toast.success(data.msg)
         }else if(data.success){
             return toast.success(data.msg)
@@ -78,7 +78,7 @@ const VerifyUser = () => {
         <Button className='mt-2' variant='contained' onClick={()=>handlesubmit()}>Verify User</Button>
       </div>
       <Button className='mt-2' variant='contained' onClick={()=>{localStorage.removeItem("User");
-          localStorage.removeItem("token");router("/")}}>Logout</Button>
+          localStorage.removeItem("token");router("/");localStorage.removeItem("selectedchat")}}>Logout</Button>
     </div>
   )
 }

@@ -6,12 +6,15 @@ import AddIcon from '@mui/icons-material/Add';
 import ChatLoading from './ChatLoading';
 import GroupModal from './GroupChatModal';
 export const getSender = (loggeduser, users) => {
-  return users[0]._id === loggeduser._id ? users[1].name : users[0].name
+  if(users){
+    return users[0]?._id === loggeduser?._id ? users[1]?.name : users[0]?.name
+  }
+  
 }
 const MysChats = ({ fetchagain, setfetchagain }) => {
   const [loading, setloading] = useState(false)
   const { setchats, chats, selectedChat, setselectedChat, loggeduser, setloggeduser } = useChat();
-
+  const [user,setuser]=useState()
   const fetchChat = async () => {
     setloading(true);
     const data = await axios("https://chit-chat-backend-y7u2.onrender.com/chats/fetchchats", {
@@ -27,7 +30,7 @@ const MysChats = ({ fetchagain, setfetchagain }) => {
   useEffect(() => {
     fetchChat()
     // setselectedChat(chats[0].)
-    setloggeduser(JSON.parse(localStorage.getItem("User")))
+    setuser(JSON.parse(localStorage.getItem("User")))
     setselectedChat(JSON.parse(localStorage.getItem("selectedchat")))
   }, [fetchagain, setfetchagain])
   return (
@@ -43,7 +46,7 @@ const MysChats = ({ fetchagain, setfetchagain }) => {
           {
             chats.map((item) => {
               return <div key={item._id} className={`${selectedChat?._id === item._id ? "bg-yellow-100" : "bg-slate-300"} border-2 shadow-2xl p-2 rounded-lg`} onClick={() => { setselectedChat(item); localStorage.setItem("selectedchat", JSON.stringify(item)) }}>
-                {!item.isGroupChat ? getSender(loggeduser, item.users) : item.chatName}
+                {!item.isGroupChat ? getSender(user, item.users) : item.chatName}
               </div>
             })
           }

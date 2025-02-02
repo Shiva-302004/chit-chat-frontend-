@@ -103,6 +103,7 @@ const SideDrawer = () => {
           setAnchorE2(null);
           localStorage.removeItem("User")
           localStorage.removeItem("token")
+          ;localStorage.removeItem("selectedchat")
           Router("/")
         }}>Logout</MenuItem>
       </Menu>
