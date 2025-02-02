@@ -5,6 +5,7 @@ import Chat from './components/Chat'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UseAnimations from "react-useanimations";
+import VerifyUser from './components/verifyuser';
 function App() {
   return (
     <div className='app overflow-x-hidden w-[100vw] '>
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/chats' element={<Chat />} />
+        <Route path="/user/:id" element={<VerifyUser/>}/>
       </Routes>
     </div>
   )

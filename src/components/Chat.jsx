@@ -5,8 +5,16 @@ import SideDrawer from '../chats/SideDrawer';
 import MysChats from '../chats/MysChats';
 import ChatBox from '../chats/ChatBox';
 import { Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 const Chat = () => {
   const { chat, setchat, user, selectedChat } = useChat();
+  const router=useNavigate()
+  useEffect(()=>{
+    const usernew=JSON.parse(localStorage.getItem("User"))
+    if(!usernew.verified){
+      router(`/user/${usernew?.email}`)
+    }
+  },[])
   const [fetchagain, setfetchagain] = useState(false)
   return (
     <div className='w-full h-[100vh] flex flex-col'>

@@ -58,7 +58,11 @@ const Home = () => {
 
         localStorage.setItem("token",user.data.token)
         localStorage.setItem("User",JSON.stringify(user.data.user))
-        router("/chats")
+        if(user.data.user.verified){
+          router("/chats")
+        }else{
+          router(`/user/${user.data.user.email}`)
+        }
         }else{
           toast.error(user.data.msg)
         }
@@ -83,7 +87,12 @@ const Home = () => {
         toast.success(data.data.msg)
         localStorage.setItem("token",data.data.token)
         localStorage.setItem("User",JSON.stringify(data.data.user))
-        router("/chats")
+        if(data.data.user.verified){
+          router("/chats")
+        }else{
+          router(`/user/${data.data.user.email}`)
+        }
+        
       }else{
         toast.error(data.data.msg)
       }
