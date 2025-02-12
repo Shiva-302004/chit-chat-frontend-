@@ -18,7 +18,7 @@ const Chat = () => {
   const [fetchagain, setfetchagain] = useState(false)
   return (
     <div className='w-full h-[100vh] flex flex-col'>
-      {user && <SideDrawer />}
+      {user && <SideDrawer fetchagain={fetchagain} setfetchagain={fetchagain}/>}
       <Box width={"100%"} height={"100%"} display={"flex"} flexDirection={"row"} justifyContent={'space-between'} alignItems={'center'} padding={"2px"}>
         <div className={`${selectedChat ? "hidden" : "block"} md:flex`}>{user && <MysChats fetchagain={fetchagain} setfetchagain={setfetchagain} />}</div>
         <div className={`${selectedChat ? "block" : "hidden"} md:flex`}>{user && <ChatBox fetchagain={fetchagain} setfetchagain={setfetchagain} />}</div>

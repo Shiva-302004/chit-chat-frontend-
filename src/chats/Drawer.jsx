@@ -11,16 +11,19 @@ import { toast } from 'react-toastify';
 import ChatLoading from './ChatLoading';
 import SerchList from './SerchList';
 import { useChat } from '../context/Chatprovider';
-export default function TemporaryDrawer({setloading,loading,searchresults,setsearchresults,Open, setOpen,toggleDrawer,search,setsearch}) {
+export default function TemporaryDrawer({fetchagain,setfetchagain,setloading,loading,searchresults,setsearchresults,Open, setOpen,toggleDrawer,search,setsearch}) {
     const {chats,setchats,setselectedChat}=useChat()
     const accessChat=async(userId)=>{
         try{
+            setchats(JSON.parse(localStorage.getItem("chats")))
             const {data}=await axios.post("https://chit-chat-backend-y7u2.onrender.com/chats/",{"userId":userId},{headers:{
                 "Content-Type":"application/json",
-                "token":localStorage.getItem("token")||null
+                "token":localStorage.getItem("token")
             }})
-            if(!chats.find(item=>item._id===data.data._id)) setchats([data,...chats])
+            if(!chats?.find(item=>item._id===data._id)) setchats([data,...chats])
             setselectedChat(data.data)
+            setfetchagain(!fetchagain)
+            localStorage.setItem("selectedchat",JSON.stringify(data.data))
             console.log(data)
         }catch(err){
             console.log(err)

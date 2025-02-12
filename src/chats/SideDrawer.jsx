@@ -7,7 +7,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import TransitionsModal from './ProfileModal';
 import { useNavigate } from 'react-router-dom';
 import TemporaryDrawer from './Drawer';
-const SideDrawer = () => {
+const SideDrawer = ({fetchagain,setfetchagain}) => {
   const Router = useNavigate();
   const [search, setsearch] = useState("")
   const [searchresults, setsearchresults] = useState([])
@@ -44,7 +44,7 @@ const SideDrawer = () => {
   return (
     <Box width={"100%"} height={"10%"} display={"flex"} flexDirection={"row"} padding={"3px"} justifyContent={"space-between"} bgcolor={"white"} >
       <Tooltip title="Search Users" className=''>
-        <div className='w-15 text-lg h-6 md:w-24 md:text-sm md:h-10 mt-2 md:p-1   rounded-xl'><div className=''><TemporaryDrawer search={search} setsearch={setsearch} toggleDrawer={toggleDrawer} Open={Open} setOpen={setOpen} searchresults={searchresults} setsearchresults={setsearchresults} loading={loading} setloading={setloading} /></div></div>
+        <div className='w-15 text-lg h-6 md:w-24 md:text-sm md:h-10 mt-2 md:p-1   rounded-xl'><div className=''><TemporaryDrawer fetchagain={fetchagain} setfetchagain={setfetchagain} search={search} setsearch={setsearch} toggleDrawer={toggleDrawer} Open={Open} setOpen={setOpen} searchresults={searchresults} setsearchresults={setsearchresults} loading={loading} setloading={setloading} /></div></div>
       </Tooltip>
       <div className='text-lg md:text-xl text-pink-500 font-bold p-2'> Chit-Chat</div>
       <Button
@@ -103,7 +103,7 @@ const SideDrawer = () => {
           setAnchorE2(null);
           localStorage.removeItem("User")
           localStorage.removeItem("token")
-          ;localStorage.removeItem("selectedchat")
+          ;localStorage.removeItem("selectedchat");localStorage.removeItem("chats")
           Router("/")
         }}>Logout</MenuItem>
       </Menu>

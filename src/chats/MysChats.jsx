@@ -24,6 +24,7 @@ const MysChats = ({ fetchagain, setfetchagain }) => {
       }
     })
     setchats(data.data)
+    localStorage.setItem("chats", JSON.stringify(data.data))
     setloading(false)
     console.log(data.data)
   }

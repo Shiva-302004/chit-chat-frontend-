@@ -40,7 +40,7 @@ const VerifyUser = () => {
         console.log(data)
         if(data.msg==="user not registered"){
           localStorage.removeItem("User");
-          localStorage.removeItem("token");router("/");localStorage.removeItem("selectedchat")
+          localStorage.removeItem("token");router("/");localStorage.removeItem("selectedchat");localStorage.removeItem("chats")
           return toast.success(data.msg)
         }else if(data.success){
             return toast.success(data.msg)
